@@ -1,9 +1,11 @@
 # dummy-ms
 
-dummy-mw aims to be a simple middleware which can simulate a variety of scenarios such as:
+[![CircleCI](https://circleci.com/gh/danielpsf/go-dummy-ms.svg?style=svg)](https://circleci.com/gh/danielpsf/go-dummy-ms) [![codecov](https://codecov.io/gh/danielpsf/go-dummy-ms/branch/master/graph/badge.svg)](https://codecov.io/gh/danielpsf/go-dummy-ms) 
+
+dummy-ms aims to be a simple micro-service which can simulate a variety of scenarios such as:
 - Timeouts
 - Computer misbehave, like:
-  - Excessive memory consupmtion
+  - Excessive memory consumption
   - Excessive CPU consumption
   - Excessive network consumption
 - etc
