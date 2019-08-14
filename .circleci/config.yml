@@ -1,10 +1,27 @@
-version: 2
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@1.0.5
+
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.9
+      - image: circleci/golang:1.11
 
     steps:
       - checkout
-
-      - run: go test -v ./...
+      - run: go build
+      - run:
+          name: "Create a temp directory for artifacts"
+          command: |
+            mkdir -p /tmp/artifacts
+      - run:
+         command: |
+           go test -coverprofile=c.out
+           go tool cover -html=c.out -o coverage.html
+           mv coverage.html /tmp/artifacts
+           cat profile.out >> coverage.txt
+      - store_artifacts:
+         path: /tmp/artifacts
+      - codecov/upload:
+          file: coverage.txt
