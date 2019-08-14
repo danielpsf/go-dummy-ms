@@ -26,7 +26,6 @@ func init() {
 	logrus.SetOutput(os.Stdout)
 	logLevel, _ := logrus.ParseLevel(strings.ToLower(envvars.LogLevel))
 	logrus.SetLevel(logLevel)
-	logrus.Fields["service"] = "dummy-ms"
 }
 
 func main() {
