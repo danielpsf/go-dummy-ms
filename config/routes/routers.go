@@ -3,9 +3,9 @@ package routes
 import (
 	"net/http"
 
+	"github.com/danielpsf/go-dummy-ms/status"
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
-	"github.com/danielpsf/go-dummy-ms/status"
 )
 
 type route struct {

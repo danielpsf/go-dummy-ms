@@ -7,11 +7,11 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/danielpsf/go-dummy-ms/config/envvars"
+	"github.com/danielpsf/go-dummy-ms/config/routes"
 	"github.com/gorilla/handlers"
 	"github.com/rs/cors"
 	"github.com/sirupsen/logrus"
-	"github.com/danielpsf/go-dummy-ms/configuration/envvars"
-	"github.com/danielpsf/go-dummy-ms/configuration/routes"
 )
 
 func init() {
