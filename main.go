@@ -26,6 +26,7 @@ func init() {
 	logrus.SetOutput(os.Stdout)
 	logLevel, _ := logrus.ParseLevel(strings.ToLower(envvars.LogLevel))
 	logrus.SetLevel(logLevel)
+	logrus.Fields["service"] = "dummy-ms"
 }
 
 func main() {
@@ -36,19 +37,19 @@ func main() {
 func showStartupLogs() {
 	var openFiles syscall.Rlimit
 
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("--------------------------------------")
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("------------STARTING dummy-mw------------")
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("Log Level: " + envvars.LogLevel)
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("Server Port: " + envvars.ServerPort)
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("URL Scheme: " + envvars.Scheme)
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("AWS ENV: " + envvars.Env)
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("--------------------------------------")
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("------------STARTING dummy-ms------------")
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Log Level: " + envvars.LogLevel)
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Server Port: " + envvars.ServerPort)
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("URL Scheme: " + envvars.Scheme)
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("AWS ENV: " + envvars.Env)
 
 	err := syscall.Getrlimit(syscall.RLIMIT_NOFILE, &openFiles)
 	if err == nil {
-		logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("Rlimit: " + strconv.FormatUint(openFiles.Cur, 10) + " " + strconv.FormatUint(openFiles.Max, 10))
+		logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Rlimit: " + strconv.FormatUint(openFiles.Cur, 10) + " " + strconv.FormatUint(openFiles.Max, 10))
 	}
 
-	logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Info("--------------------------------------")
+	logrus.WithFields(logrus.Fields{"service": "dummy-ms"}).Info("--------------------------------------")
 }
 
 func configureWebServer() {
@@ -60,11 +61,11 @@ func configureWebServer() {
 		AllowedOrigins:   []string{"*"},
 		AllowCredentials: true,
 		AllowedHeaders:   []string{"Origin", "Accept", "Content-Type", "Authorization", "X-XSRF-Token"},
-		AllowedMethods:   []string{"GET", "POST", "OPTIONS", "PATCH", "PUT", "DELETE", "COPY"},
+		AllowedMethods:   []string{"GET", "POST", "OPTIONS", "PATCH", "PUT", "DELETE"},
 	}).Handler(r)
 
 	err := http.ListenAndServe(":"+envvars.ServerPort, handlers.RecoveryHandler()(handler))
 	if err != nil {
-		logrus.WithFields(logrus.Fields{"service": "dummy-mw"}).Error("HTTP Server panic. | " + err.Error())
+		logrus.WithFields(logrus.Fields{"service": "dummy-ms"}).Error("HTTP Server panic. | " + err.Error())
 	}
 }
