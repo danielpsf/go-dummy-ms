@@ -20,7 +20,7 @@ jobs:
            go test -coverprofile=c.out
            go tool cover -html=c.out -o coverage.html
            mv coverage.html /tmp/artifacts
-           cat profile.out >> coverage.txt
+           cat c.out >> coverage.txt
       - store_artifacts:
          path: /tmp/artifacts
       - codecov/upload:
