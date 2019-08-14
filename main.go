@@ -37,7 +37,7 @@ func showStartupLogs() {
 	var openFiles syscall.Rlimit
 
 	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("--------------------------------------")
-	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("------------STARTING dummy-ms------------")
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("------------STARTING go-dummy-ms------------")
 	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Log Level: " + envvars.LogLevel)
 	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Server Port: " + envvars.ServerPort)
 	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("URL Scheme: " + envvars.Scheme)
@@ -48,7 +48,7 @@ func showStartupLogs() {
 		logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("Rlimit: " + strconv.FormatUint(openFiles.Cur, 10) + " " + strconv.FormatUint(openFiles.Max, 10))
 	}
 
-	logrus.WithFields(logrus.Fields{"service": "dummy-ms"}).Info("--------------------------------------")
+	logrus.WithFields(logrus.Fields{"service": "go-dummy-ms"}).Info("--------------------------------------")
 }
 
 func configureWebServer() {
