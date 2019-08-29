@@ -42,3 +42,4 @@ Well, I rather allow the tests to be our live documentation, so BDD makes it eas
 - https://github.com/rosenhouse/counter-demo
 - https://medium.com/@zach_4342/dependency-injection-in-golang-e587c69478a8
 - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+- https://github.com/cevatbarisyilmaz/lossy (network degradation tool)
